@@ -1,0 +1,15 @@
+{
+  "name": "随身涵语",
+  "short_name": "随身涵语",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "随时随地buxi！",
+  "icons": [
+    {
+      "src": "img/badge.png",
+      "sizes": "220x220",
+      "type": "image/png"
+    }
+  ]
+}
