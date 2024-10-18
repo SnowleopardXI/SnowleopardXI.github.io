@@ -91,34 +91,32 @@ const clearCacheButton = document.getElementById("btn3");
 const character = document.getElementById("character");
 const voiceType = document.getElementById("voicetype");
 const autoMusic = document.getElementById("automusic");
-const bilibiliLink = document.getElementById("bilibili");
-const githubLink = document.getElementById("github");
 const image = document.getElementById("img1");
 const titleDiv = document.getElementById("title-div");
 const dashboard = document.getElementById("panel1");
 const cacheOk = document.getElementById("cacheok");
 const sensOk = document.getElementById("sensok");
 
-var igiari_accuracy = localStorage.getItem("igiari_lmd") || 5;
-accuracy.value = igiari_accuracy;
+var aabei_accuracy = localStorage.getItem("aabei_lmd") || 5;
+accuracy.value = aabei_accuracy;
 let msg = accuracy >= 20 ? "握紧设备！" : "平放于桌面";
-document.getElementById("lmdv").innerHTML = `[${Number(igiari_accuracy).toFixed(1)}]&nbsp;&nbsp;${msg}`;
+document.getElementById("lmdv").innerHTML = `[${Number(aabei_accuracy).toFixed(1)}]&nbsp;&nbsp;${msg}`;
 // document.getElementById("lmdv").innerHTML = lmd;
 var inob = false;
-var selchar = localStorage.getItem("igiari_char") || "strange";
-if (selchar === "igiari") {
+var selchar = localStorage.getItem("aabei_char") || "strange";
+if (selchar === "aabei") {
     selchar = "strange";
-    localStorage.setItem("igiari_char", "strange");
+    localStorage.setItem("aabei_char", "strange");
 }
-var selvol = localStorage.getItem("igiari_vol") || "igiari";
-document.getElementById("img1").src = "img/" + selvol + ".png";
+var selvol = localStorage.getItem("aabei_vol") || "aabei";
+document.getElementById("img1").src = "img/img1.jpg";
 
 character.value = selchar;
 voiceType.value = selvol;
 var automusic = false;
 var touchtime = new Date().getTime();
 var mousemode = false;
-if (sessionStorage.getItem("igiari_hide") === "1" && !device.ios()) {
+if (sessionStorage.getItem("aabei_hide") === "1" && !device.ios()) {
     titleDiv.classList.add("hide2");
     dashboard.classList.add("hide2");
 } else {
@@ -139,9 +137,9 @@ try {
             }
         }
     }
-    localStorage.setItem("igiari_vol", selvol);
+    localStorage.setItem("aabei_vol", selvol);
     voiceType.value = selvol;
-    image.src = "img/" + selvol + ".png";
+    image.src = "img/img1.jpg";
     cacheOk.innerHTML = "💬";
     let _filename = "sound/" + selchar + "/" + selvol + ".mp3";
     let _mp3Key = `cachedMP3_${_filename}`;
@@ -162,12 +160,12 @@ onload = function () {
                 if (!mousemode) {
                     this.innerHTML = "停止";
                     window.mousemode = true;
-                    document.body.addEventListener("mousemove", objection);
+                    document.body.addEventListener("mousemove", bei);
                 } else {
                     this.innerHTML = "开始";
                     window.mousemode = false;
                     document.body.classList.remove("hidecur");
-                    document.body.removeEventListener("mousemove", objection);
+                    document.body.removeEventListener("mousemove", bei);
                 }
             }
         });
@@ -285,11 +283,11 @@ function dm(event) {
         2
     )}, ${amy.toFixed(2)}, ${amz.toFixed(2)}`;
     if (
-        Math.abs(accx) >= igiari_accuracy ||
-        Math.abs(accy) >= igiari_accuracy ||
-        Math.abs(accz) >= igiari_accuracy
+        Math.abs(accx) >= aabei_accuracy ||
+        Math.abs(accy) >= aabei_accuracy ||
+        Math.abs(accz) >= aabei_accuracy
     ) {
-        objection();
+        bei();
     }
 }
 
@@ -300,7 +298,7 @@ function checkIfVisible(htmlElement = dashboard) {
 
 testButton.addEventListener("click", function () {
     if (checkIfVisible()) {
-        objection();
+        bei();
     }
 });
 
@@ -317,10 +315,10 @@ clearCacheButton.addEventListener("click", function () {
 });
 
 accuracy.addEventListener("input", function () {
-    window.igiari_accuracy = this.value;
-    localStorage.setItem("igiari_lmd", igiari_accuracy);
+    window.aabei_accuracy = this.value;
+    localStorage.setItem("aabei_lmd", aabei_accuracy);
     let msg = accuracy >= 20 ? "握紧设备！" : "平放于桌面";
-    document.getElementById("lmdv").innerHTML = `[${Number(igiari_accuracy).toFixed(
+    document.getElementById("lmdv").innerHTML = `[${Number(aabei_accuracy).toFixed(
         1
     )}]&nbsp;&nbsp;${msg}`;
 });
@@ -332,20 +330,16 @@ document.getElementById("obje-div").addEventListener("click", function () {
         if (
             [...dashboard.classList].includes("hide2")
         ) {
-            sessionStorage.setItem("igiari_hide", 1);
+            sessionStorage.setItem("aabei_hide", 1);
             character.disabled = true;
             voiceType.disabled = true;
             accuracy.disabled = true;
-            bilibiliLink.style.pointerEvents = "none";
-            githubLink.style.pointerEvents = "none";
             autoMusic.disabled = true;
         } else {
-            sessionStorage.setItem("igiari_hide", 0);
+            sessionStorage.setItem("aabei_hide", 0);
             character.disabled = false;
             voiceType.disabled = false;
             accuracy.disabled = false;
-            bilibiliLink.style.pointerEvents = "auto";
-            githubLink.style.pointerEvents = "auto";
             autoMusic.disabled = false;
         }
         // console.log("dblclick");
@@ -357,7 +351,7 @@ document.getElementById("obje-div").addEventListener("click", function () {
 
 character.addEventListener("change", function(){
     window.selchar = this.value;
-    localStorage.setItem("igiari_char", selchar);
+    localStorage.setItem("aabei_char", selchar);
     for (ele of voiceType.options) {
         if (charvol[selchar].includes(ele.value)) {
             ele.disabled = false;
@@ -367,9 +361,9 @@ character.addEventListener("change", function(){
             ele.style.display = "none";
             if (voiceType.value === ele.value) {
                 selvol = charvol[selchar][0];
-                localStorage.setItem("igiari_vol", selvol);
+                localStorage.setItem("aabei_vol", selvol);
                 voiceType.value = selvol;
-                image.src = "img/" + selvol + ".png";
+                image.src = "img/img1.jpg";
                 cacheOk.innerHTML = "💬";
                 downloadAndCacheMP3("sound/" + selchar + "/" + selvol + ".mp3");
             }
@@ -387,8 +381,8 @@ character.addEventListener("change", function(){
 
 voiceType.addEventListener("change", function () {
     window.selvol = this.value;
-    localStorage.setItem("igiari_vol", selvol);
-    image.src = "img/" + selvol + ".png";
+    localStorage.setItem("aabei_vol", selvol);
+    image.src = "img/img1.jpg";
     cacheOk.innerHTML = "💬";
     let filename = "sound/" + selchar + "/" + selvol + ".mp3";
     let mp3Key = `cachedMP3_${filename}`;
@@ -400,12 +394,8 @@ voiceType.addEventListener("change", function () {
     }
 });
 
-autoMusic.addEventListener("change", function () {
-    window.automusic = this.checked;
-    localStorage.setItem("igiari_autom", automusic);
-});
 
-function objection() {
+function bei() {
     if (!inob) {
         try {
             clearTimeout(timer1);
@@ -417,13 +407,13 @@ function objection() {
                 window.navigator.vibrate(400);
             }
             shake("img1");
-        }, 200);
+        }, 500);
         if (automusic) {
             setTimeout(() => {
                 try {
                     document.querySelector(".aplayer-play").click();
                 } catch (e) { }
-            }, 600);
+            }, 1000);
         }
         testButton.disabled = true;
         // document.getElementById("lmd").disabled = true;
@@ -447,7 +437,7 @@ function objection() {
             try {
                 clearTimeout(timer1);
             } catch (e) { }
-        }, 1300);
+        }, 300);
     }
 }
 
@@ -494,12 +484,12 @@ document.body.addEventListener("keydown", function (event) {
             clearCacheButton.innerHTML = "停止";
             window.mousemode = true;
             document.body.classList.add("hidecur");
-            document.body.addEventListener("mousemove", objection);
+            document.body.addEventListener("mousemove", bei);
         } else {
             clearCacheButton.innerHTML = "开始";
             window.mousemode = false;
             document.body.classList.remove("hidecur");
-            document.body.removeEventListener("mousemove", objection);
+            document.body.removeEventListener("mousemove", bei);
         }
     }
 });
