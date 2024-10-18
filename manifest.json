@@ -7,9 +7,9 @@
   "description": "随时随地buxi！",
   "icons": [
     {
-      "src": "img/badge.png",
+      "src": "img/img1.jpg",
       "sizes": "220x220",
-      "type": "image/png"
+      "type": "image/jpg"
     }
   ]
 }

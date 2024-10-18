@@ -13,6 +13,11 @@ var charvol = {
         "ah",
         "heihei",
         "heiheihaha",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
     ],
     game: [
         "6",
@@ -46,14 +51,33 @@ var charvol = {
         "shu",
         "wua",
     ],
-    qian: [
-        "igiari",
-        "objection",
-        "yiyi",
-        "matta",
-        "kurae",
-        "holdit",
-        "takethat",
+    short: [
+        "abei",
+        "bei",
+        "buxi",
+        "sb",
+        "sb2",
+        "sb3",
+        "sb4",
+        "shit",
+        "ur bei",
+        "ur shit",
+        "hhhhhh",
+        "big sb",
+        "start",
+        "wobuhui",
+        "shuangbushuang",
+        "be bei",
+        "sb nanbeng",
+        "chunchunsb",
+        "hei",
+        "eiheihei",
+    ],
+    middle: [
+        "dingzhen1",
+        "dingzhen2",
+        "busheep",
+        "japan",
     ],
 };
 let amx = 0;
@@ -71,7 +95,6 @@ const bilibiliLink = document.getElementById("bilibili");
 const githubLink = document.getElementById("github");
 const image = document.getElementById("img1");
 const titleDiv = document.getElementById("title-div");
-const audioPlayer = document.getElementById("9487616885");
 const dashboard = document.getElementById("panel1");
 const cacheOk = document.getElementById("cacheok");
 const sensOk = document.getElementById("sensok");
@@ -98,11 +121,9 @@ var mousemode = false;
 if (sessionStorage.getItem("igiari_hide") === "1" && !device.ios()) {
     titleDiv.classList.add("hide2");
     dashboard.classList.add("hide2");
-    audioPlayer.classList.add("hide2");
 } else {
     titleDiv.classList.remove("hide2");
     dashboard.classList.remove("hide2");
-    audioPlayer.classList.remove("hide2");
 }
 
 try {
@@ -308,7 +329,6 @@ document.getElementById("obje-div").addEventListener("click", function () {
     if (new Date().getTime() - touchtime < 300) {
         titleDiv.classList.toggle("hide2");
         dashboard.classList.toggle("hide2");
-        audioPlayer.classList.toggle("hide2");
         if (
             [...dashboard.classList].includes("hide2")
         ) {
@@ -319,7 +339,6 @@ document.getElementById("obje-div").addEventListener("click", function () {
             bilibiliLink.style.pointerEvents = "none";
             githubLink.style.pointerEvents = "none";
             autoMusic.disabled = true;
-            audioPlayer.style.pointerEvents = "none";
         } else {
             sessionStorage.setItem("igiari_hide", 0);
             character.disabled = false;
@@ -328,7 +347,6 @@ document.getElementById("obje-div").addEventListener("click", function () {
             bilibiliLink.style.pointerEvents = "auto";
             githubLink.style.pointerEvents = "auto";
             autoMusic.disabled = false;
-            audioPlayer.style.pointerEvents = "auto";
         }
         // console.log("dblclick");
     } else {
