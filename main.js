@@ -79,6 +79,9 @@ var charvol = {
         "busheep",
         "japan",
     ],
+    lol: [
+        "air",
+    ]
 };
 let amx = 0;
 let amy = 0;
