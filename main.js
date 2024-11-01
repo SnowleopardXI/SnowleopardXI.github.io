@@ -18,6 +18,7 @@ var charvol = {
         "3",
         "4",
         "5",
+        "6",
     ],
     game: [
         "6",
@@ -60,6 +61,8 @@ var charvol = {
         "sb3",
         "sb4",
         "shit",
+        "aiya",
+        "bububu",
         "ur bei",
         "ur shit",
         "hhhhhh",
@@ -81,6 +84,7 @@ var charvol = {
     ],
     lol: [
         "air",
+        "kor",
     ]
 };
 let amx = 0;
